@@ -20,7 +20,9 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>portal</span>
+      <span>{{'WEBSITE_NAME' | translate}}</span>
+
+      <app-lang></app-lang>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>

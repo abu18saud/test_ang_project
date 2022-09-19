@@ -1,0 +1,8 @@
+<button mat-button [matMenuTriggerFor]="menu">
+    <i class="mdi mdi-flag"></i>
+    {{translateService.currentLang !== 'ar'? ('BUTTONS.ARABIC' | translate) : ('BUTTONS.ENGLISH' | translate)}}
+</button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="selectLanguage('ar')">{{'BUTTONS.ARABIC' | translate}}</button>
+    <button mat-menu-item (click)="selectLanguage('en')">{{'BUTTONS.ENGLISH' | translate}}</button>
+</mat-menu>

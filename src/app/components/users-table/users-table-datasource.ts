@@ -11,7 +11,7 @@ export interface UsersTableItem {
 }
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: UsersTableItem[] = [
+const EXAMPLE_DATA: any[] = [
   {id: 1, name: 'Hydrogen'},
   {id: 2, name: 'Helium'},
   {id: 3, name: 'Lithium'},

@@ -1,0 +1,11 @@
+{
+    "WEBSITE_NAME": "Elite Skills Portal",
+    "BUTTONS": {
+        "ARABIC": "Arabic",
+        "ENGLISH": "English"
+    },
+    "TABLE": {
+        "ID": "ID",
+        "NAME": "Name"
+    }
+}
