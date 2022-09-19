@@ -12,6 +12,7 @@ export class UsersService {
   backEndURL: string = "";
   list: any = [];
   oneItem: Users = new Users();
+  user:any;
 
   constructor(private http: HttpClient) {
     this.backEndURL = this.getBackEndUrl();
@@ -23,11 +24,21 @@ export class UsersService {
   }
 
   //Get
-  getOnceUser(id:number): Observable<any> {
-    return this.http.get(`${this.backEndURL}/users/`+ id);
+  getOnceUser(id: number): Observable<any> {
+    return this.http.get(`${this.backEndURL}/users/` + id);
+  }
+  //Post
+  createUser(item: any) {
+    return this.http.post(`${this.backEndURL}/users`, item);
   }
 
-
+  //Post
+  deletUser(id: number): Observable<any> {
+    this.getOnceUser(id).subscribe((res: any) => {
+      this.user = res;
+    })
+    return this.http.post(`${this.backEndURL}/users/` + id +"/delete", this.user);
+  }
 
 
   getBackEndUrl(): string {

@@ -22,6 +22,11 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { DatePipe } from '@angular/common';
 import { LangComponent } from './components/lang/lang.component';
+import { CreateUserComponent } from './components/create-user/create-user.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -34,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavComponent,
     UsersTableComponent,
     LangComponent,
+    CreateUserComponent,
   ],
   imports: [
     MaterialModule,
@@ -58,7 +64,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       useFactory: HttpLoaderFactory,
       deps: [HttpClient]
       }
-      })
+      }),
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    ReactiveFormsModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

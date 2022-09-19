@@ -6,6 +6,7 @@
     },
     "TABLE": {
         "ID": "ID",
-        "NAME": "Name"
+        "NAME": "Name",
+        "ACTIONS":"Actions"
     }
 }
