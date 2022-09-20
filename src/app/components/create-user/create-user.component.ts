@@ -10,7 +10,7 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./create-user.component.scss']
 })
 export class CreateUserComponent {
-  user: any;
+  user: any = { ar_name: '', en_name: '' };
   addressForm = this.fb.group({
     arName: [null, Validators.required],
     enName: [null, Validators.required]
@@ -23,20 +23,16 @@ export class CreateUserComponent {
     public usersService: UsersService) { }
 
   onSubmit(): void {
-    this.user =
-    {
-      "ar_name": this.fb.control('arName').value,
-      "en_name": this.fb.control('enName').value
-    }
-
-    if (this.fb) {
-      this.usersService.createUser(this.user).subscribe((data:any) => {
+    if (this.addressForm.valid) {
+      this.usersService.createUser(this.user).subscribe((data: any) => {
         alert("لقد تمت إضافة العنصر الجديد بنجاح");
       },
         (error: HttpErrorResponse) => {
           alert("هناك مشكلة أدّت إلى عدم إضافة العنصر");
         }
       );
+    } else {
+      alert('يرجى الالتزام بتعبئة الحقول الإجبارية')
     }
 
 

@@ -1,9 +1,9 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -24,7 +24,8 @@ export class UsersTableComponent implements AfterViewInit {
   displayedColumns = ['id', 'name', 'actions'];
 
   constructor(private _liveAnnouncer: LiveAnnouncer,
-    public usersService: UsersService) {
+    public usersService: UsersService,
+    router: Router) {
   }
 
   ngOnInit(): void {
@@ -37,15 +38,9 @@ export class UsersTableComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
-    // this.dataSource.paginator = this.paginator;
-    // this.table.dataSource = this.dataSource;
   }
 
   delete(id: number) {
-
-
-
-
     this.usersService.deletUser(id).subscribe(data => {
       alert("لقد تم حذف العنصر بنجاح");
     },
@@ -54,6 +49,7 @@ export class UsersTableComponent implements AfterViewInit {
       }
     )
   }
+
 
 
 

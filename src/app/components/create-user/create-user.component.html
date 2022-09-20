@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="الاسم بالعربي" formControlName="arName">
+            <input matInput placeholder="الاسم بالعربي" [(ngModel)]="user.ar_name" formControlName="arName">
             <mat-error *ngIf="addressForm.controls['arName'].hasError('required')">
               First name is <strong>required</strong>
             </mat-error>
@@ -16,13 +16,15 @@
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="الاسم بالإنجليزي" formControlName="enName">
+            <input matInput placeholder="الاسم بالإنجليزي" [(ngModel)]="user.en_name" formControlName="enName">
             <mat-error *ngIf="addressForm.controls['enName'].hasError('required')">
               Last name is <strong>required</strong>
+
             </mat-error>
           </mat-form-field>
         </div>
       </div>
+      <div class="row">{{user | json}}</div>
 
 
     </mat-card-content>

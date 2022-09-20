@@ -27,6 +27,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     UsersTableComponent,
     LangComponent,
     CreateUserComponent,
+    UpdateUserComponent,
   ],
   imports: [
     MaterialModule,

@@ -17,7 +17,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'TABLE.ACTIONS' | translate}}</th>
       <td mat-cell *matCellDef="let row">
-        <mat-icon matTooltip="تعديل">edit</mat-icon>
+        <mat-icon matTooltip="تعديل" routerLink="/update-user/{{row.id}}">edit</mat-icon>
         <mat-icon class="ml-2" (click)="delete(row.id)" matTooltip="حذف">delete</mat-icon>
       </td>
     </ng-container>

@@ -32,6 +32,11 @@ export class UsersService {
     return this.http.post(`${this.backEndURL}/users`, item);
   }
 
+    //Post
+    updateUser(id: number, item: any) {
+      return this.http.post(`${this.backEndURL}/users/${id}/update`, item);
+    }
+
   //Post
   deletUser(id: number): Observable<any> {
     this.getOnceUser(id).subscribe((res: any) => {
