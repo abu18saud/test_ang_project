@@ -1,6 +1,7 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -25,6 +26,7 @@ export class UsersTableComponent implements AfterViewInit {
 
   constructor(private _liveAnnouncer: LiveAnnouncer,
     public usersService: UsersService,
+    public _MatPaginatorIntl: MatPaginatorIntl,
     router: Router) {
   }
 
@@ -38,7 +40,27 @@ export class UsersTableComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
+        //------------------------------
+        this._MatPaginatorIntl.itemsPerPageLabel = "العناصر لكل صفحة";
+        this._MatPaginatorIntl.firstPageLabel = "الصفحة الأولى";
+        this._MatPaginatorIntl.lastPageLabel = "الصفحة الأخيرة";
+        this._MatPaginatorIntl.nextPageLabel = "الصفحة التالية";
+        this._MatPaginatorIntl.previousPageLabel = "الصفحة التالية";
+        this._MatPaginatorIntl.getRangeLabel = this.getRangeDisplayText;
   }
+
+  getRangeDisplayText = (page: number, pageSize: number, length: number) => {
+    const initialText = 'من';  // customize this line
+    if (length == 0 || pageSize == 0) {
+      return `${initialText} 0 ${'من'} ${length}`;
+    }
+    length = Math.max(length, 0);
+    const startIndex = page * pageSize;
+    const endIndex = startIndex < length
+      ? Math.min(startIndex + pageSize, length)
+      : startIndex + pageSize;
+    return `${initialText} ${startIndex + 1} ${'إلى'} ${endIndex} ${'والمجموع'} ${length}`; // customize this line
+  };
 
   delete(id: number) {
     this.usersService.deletUser(id).subscribe(data => {

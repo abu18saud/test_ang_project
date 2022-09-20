@@ -28,6 +28,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ServicesComponent } from './pages/services/services.component';
+import { StaffComponent } from './pages/staff/staff.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -42,6 +45,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     LangComponent,
     CreateUserComponent,
     UpdateUserComponent,
+    DashboardComponent,
+    ServicesComponent,
+    StaffComponent,
   ],
   imports: [
     MaterialModule,
