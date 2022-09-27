@@ -1,0 +1,33 @@
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="alert alert-info">
+        Username: test<br />
+        Password: test
+    </div>
+    <div class="card">
+        <h4 class="card-header">Angular 10 Basic Authentication Example</h4>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" formControlName="username" [(ngModel)]="auth.username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="loginForm.controls['username'].hasError('required')">Username is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" [(ngModel)]="auth.hash_raw_password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="loginForm.controls['password'].hasError('required')">Password is required</div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+                <span>{{auth | json}}</span>
+            </form>
+        </div>
+    </div>
+</div>

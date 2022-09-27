@@ -3,7 +3,7 @@
       <mat-card-header>
         <mat-icon class="ml-2" (click)="goBack()" matTooltip="العودة إلى قائمة المستخدمين">arrow_forward</mat-icon>
 
-        <mat-card-title>Shipping Information</mat-card-title>
+        <mat-card-title>تعديل معلومات المستخدم</mat-card-title>
       </mat-card-header>
       <mat-card-content>
   
@@ -24,6 +24,23 @@
               </mat-error>
             </mat-form-field>
           </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="اسم المستخدم" [(ngModel)]="user.username" formControlName="username">
+              <mat-error *ngIf="addressForm.controls['username'].hasError('required')">
+                Username is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput type="password" placeholder="كلمة المرور" [(ngModel)]="user.password" formControlName="password">
+              <mat-error *ngIf="addressForm.controls['password'].hasError('required')">
+               Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
         </div>
   
       </mat-card-content>

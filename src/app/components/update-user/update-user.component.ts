@@ -12,10 +12,12 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./update-user.component.scss']
 })
 export class UpdateUserComponent implements OnInit {
-  user: any = { ar_name: '', en_name: '' };;
+  user: any = { username:'', password:'', ar_name: '', en_name: '' };
   addressForm = this.fb.group({
     arName: [null, Validators.required],
-    enName: [null, Validators.required]
+    enName: [null, Validators.required],
+    username: [null, Validators.required],
+    password: [null, Validators.required]
   });
   
   constructor(private fb: FormBuilder,

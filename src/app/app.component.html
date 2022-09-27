@@ -1,1 +1,5 @@
-<app-nav dir="rtl"></app-nav>
+<app-nav *ngIf="user.username != null;else other_content" dir="rtl"></app-nav>
+
+<ng-template #other_content>
+<app-login></app-login>
+</ng-template>
